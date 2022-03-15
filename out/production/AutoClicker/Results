@@ -1,0 +1,53 @@
+//9.4-9.7 per minute
+    static int tabs =                           20;
+    static int delay_between_actions =          20;
+    static int delay_between_updating_tabs =    30;
+    static int delay_5_window_rest =            5000;
+    static int delay_5_window_tabs_render =     100;
+    static int delay_rest =                     2000;
+    static int delay_tabs_render =              30;
+
+//7.8-7.9 per minute
+    static int tabs =                           10;
+    static int delay_between_actions =          20;
+    static int delay_between_updating_tabs =    30;
+    static int delay_5_window_rest =            5000;
+    static int delay_5_window_tabs_render =     100;
+    static int delay_rest =                     2000;
+    static int delay_tabs_render =              30;
+
+//7 per minute
+    static int tabs =                           10;
+    static int delay_between_actions =          25;
+    static int delay_between_updating_tabs =    30;
+    static int delay_5_window_rest =            5000;
+    static int delay_5_window_tabs_render =     100;
+    static int delay_rest =                     2000;
+    static int delay_tabs_render =              30;
+
+//6.8 per minute
+    static int tabs =                           10;
+    static int delay_between_actions =          30;
+    static int delay_between_updating_tabs =    30;
+    static int delay_5_window_rest =            5000;
+    static int delay_5_window_tabs_render =     100;
+    static int delay_rest =                     2000;
+    static int delay_tabs_render =              30;
+
+//6.6 per minute
+    static int tabs =                           10;
+    static int delay_between_actions =          10;
+    static int delay_between_updating_tabs =    30;
+    static int delay_5_window_rest =            5000;
+    static int delay_5_window_tabs_render =     100;
+    static int delay_rest =                     2000;
+    static int delay_tabs_render =              30;
+
+//6.5 per minute
+    static int tabs =                           10;
+    static int delay_between_actions =          10;
+    static int delay_between_updating_tabs =    20;
+    static int delay_5_window_rest =            4000;
+    static int delay_5_window_tabs_render =     80;
+    static int delay_rest =                     2000;
+    static int delay_tabs_render =              20;
