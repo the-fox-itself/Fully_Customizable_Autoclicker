@@ -6,7 +6,6 @@ import java.awt.event.KeyListener;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.Date;
 
 public class AutoClicker {
     static int tabs =                           20;
@@ -14,6 +13,16 @@ public class AutoClicker {
     static int delay_between_updating_tabs =    30;
     static int delay_5_window_rest =            5000;
     static int delay_rest =                     2000;
+
+    public static Robot robot;
+
+    static {
+        try {
+            robot = new Robot();
+        } catch (AWTException e) {
+            e.printStackTrace();
+        }
+    }
 
     public static void main(String[] args) throws AWTException { //15.2 per minute
 //        int seconds = Integer.parseInt(readLine("Amount of seconds working:")); // 221 236.2
@@ -81,20 +90,20 @@ public class AutoClicker {
 //            robot.delay(2000);
 //        }
 
-        try {
-            int seconds = Integer.parseInt(readLine("Amount of seconds clicking:"));
-            Robot robot = new Robot();
-            robot.delay(5000);
-
-            for (int x = 0; x < seconds*25; x++) {
-                robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
-//                robot.delay(1);
-                robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
-//                robot.delay(1);
-            }
-        } catch (AWTException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            int seconds = Integer.parseInt(readLine("Amount of seconds clicking:"));
+//            Robot robot = new Robot();
+//            robot.delay(5000);
+//
+//            for (int x = 0; x < seconds*25; x++) {
+//                robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+////                robot.delay(1);
+//                robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+////                robot.delay(1);
+//            }
+//        } catch (AWTException e) {
+//            e.printStackTrace();
+//        }
 
 //            for (int x = 0; x < 1; x++) {
                 //Спам-бот
@@ -115,7 +124,57 @@ public class AutoClicker {
 //                robot.keyRelease(KeyEvent.VK_T);
 //                robot.delay(100);
 //            }
+
+        boolean[] binary = {false, false, false, false, false, false, false, false, false, false};
+
+        for (int x = 0; x < 64; x++) {
+
+            recharge(12);
+            chooseCactus(3);
+            int lastI = 0;
+            for (int i = 0; i < 10; i++) {
+                if (binary[i]) {
+                    recharge(3);
+                    chooseCactus((i + 2) * 3);
+                    binary[i] = false;
+                } else {
+                    lastI = i;
+                    recharge(-6);
+                    binary[i] = true;
+                    break;
+                }
+            }
+            for (int i = lastI; i > -1; i--) {
+                chooseCactus(3 * i);
+                if (i > 0) {
+                    recharge(3);
+                }
+            }
+        }
     }
+
+    public static void recharge(int fuel) {
+        robot.mouseMove((int) (792+fuel*42.5), 410);
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try {
+            Thread.sleep(30);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void chooseCactus(int number) {
+        robot.mouseMove(300+number*42, 300);
+        robot.mousePress(InputEvent.BUTTON1_DOWN_MASK);
+        robot.mouseRelease(InputEvent.BUTTON1_DOWN_MASK);
+        try {
+            Thread.sleep(30);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
+
     public static String readLine() {
         return readLine("");
     }
